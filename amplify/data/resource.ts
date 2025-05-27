@@ -16,7 +16,7 @@ const schema = a.schema({
     .model({
       text: a.string().required(),
     })
-    .authenticated((allow) => [allow.publicApiKey()]),
+    .authorization((allow) => [allow.publicApiKey()]),
   Articles: a
     .model({
       id: a.id().required(),
@@ -39,7 +39,7 @@ const schema = a.schema({
         .array()
         .required(),
     })
-    .authenticated((allow) => [allow.publicApiKey()]),
+    .authorization((allow) => [allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
