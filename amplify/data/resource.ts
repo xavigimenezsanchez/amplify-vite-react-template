@@ -20,7 +20,7 @@ const schema = a.schema({
   Articles: a
     .model({
       id: a.id().required(),
-      issue: a.number().required(),
+      issue: a.integer().required(),
       data: a.string().required(),
       imageCard: a.string().required(),
       title: a.string().required(),
@@ -30,12 +30,13 @@ const schema = a.schema({
       summary: a.string(),
       special: a.string(),
       text: a
-        .customType({
-          type: a.string().required(),
-          content: a.string(),
-          name: a.string(),
-          styles: a.array(),
-        })
+        .json()
+        // .customType({
+        //   type: a.string().required(),
+        //   content: a.string(),
+        //   name: a.string(),
+        //   styles: a.string().array(),
+        // })
         .array()
         .required(),
     })
