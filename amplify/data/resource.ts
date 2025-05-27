@@ -12,6 +12,34 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
+  Text: a
+    .model({
+      text: a.string().required(),
+    })
+    .authenticated((allow) => [allow.publicApiKey()]),
+  Articles: a
+    .model({
+      id: a.id().required(),
+      issue: a.number().required(),
+      data: a.string().required(),
+      imageCard: a.string().required(),
+      title: a.string().required(),
+      url: a.string().required(),
+      section: a.string().required(),
+      author: a.string().required(),
+      summary: a.string(),
+      special: a.string(),
+      text: a
+        .customType({
+          type: a.string().required(),
+          content: a.string(),
+          name: a.string(),
+          styles: a.array(),
+        })
+        .array()
+        .required(),
+    })
+    .authenticated((allow) => [allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
