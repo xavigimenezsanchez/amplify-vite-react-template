@@ -14,10 +14,8 @@ const ArticleList: React.FC = () => {
     const fetchLatestIssue = async () => {
       try {
         // First, find the latest issue number
-        const response = await client.models.Articles.list({
-          sort: { field: 'issue', direction: 'desc' },
-          limit: 1
-        });
+        const response = await client.models.Articles.list();
+
         
         if (response.data.length > 0) {
           const latestIssueNumber = response.data[0].issue;

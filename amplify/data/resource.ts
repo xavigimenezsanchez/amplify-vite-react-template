@@ -1,4 +1,4 @@
-import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
+import { type ClientSchema, a, defineData, defineStorage } from "@aws-amplify/backend";
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -41,6 +41,11 @@ const schema = a.schema({
         .required(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
+  getActualEdition: a.query().returns(a.ref("Articles").array())
+  .handler(a.handler.custom({
+    entry: "./getActualEdition.js",
+    dataSource: ""
+  }))
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -56,6 +61,8 @@ export const data = defineData({
   },
 });
 
+
+export
 /*== STEP 2 ===============================================================
 Go to your frontend source code. From your client-side code, generate a
 Data client to make CRUDL requests to your table. (THIS SNIPPET WILL ONLY
