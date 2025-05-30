@@ -41,11 +41,11 @@ const schema = a.schema({
         .required(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
-  getActualEdition: a.query().returns(a.ref("Articles").array())
-  .handler(a.handler.custom({
-    entry: "./getActualEdition.js",
-    dataSource: ""
-  }))
+  // getActualEdition: a.query().returns(a.ref("Articles").array())
+  // .handler(a.handler.custom({
+  //   entry: "./getActualEdition.js",
+  //   dataSource: ""
+  // }))
 });
 
 export type Schema = ClientSchema<typeof schema>;
