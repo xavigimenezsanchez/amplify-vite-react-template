@@ -5,7 +5,6 @@ import * as iam from "aws-cdk-lib/aws-iam";
 
 import * as osis from "aws-cdk-lib/aws-osis";
 import * as logs from "aws-cdk-lib/aws-logs";
-import { RemovalPolicy } from "aws-cdk-lib"; 
 import { defineBackend } from '@aws-amplify/backend';
 import { auth } from './auth/resource';
 import { data } from './data/resource';
