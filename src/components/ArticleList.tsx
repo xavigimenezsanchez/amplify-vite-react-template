@@ -7,7 +7,7 @@ const client = generateClient<Schema>();
 
 const ArticleList: React.FC = () => {
   const [articles, setArticles] = useState<Array<Schema['Articles']['type']>>([]);
-  const [latestIssue, setLatestIssue] = useState<number | null>(null);
+  // const [latestIssue, setLatestIssue] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const ArticleList: React.FC = () => {
 
   return (
     <div className="articles-container">
-      <h2>Latest Articles - Issue #{latestIssue}</h2>
+      <h2>Articles List</h2>
       <div className="articles-grid">
         {articles.map((article) => (
           <ArticleCard key={article.id} article={article} />
