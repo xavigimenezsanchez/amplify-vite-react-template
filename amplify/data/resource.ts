@@ -19,7 +19,7 @@ const schema = a.schema({
     .authorization((allow) => [allow.publicApiKey()]),
   Articles: a
     .model({
-      id: a.id().required(),
+      idmongo: a.id().required(),
       issue: a.integer().required(),
       data: a.string().required(),
       imageCard: a.string().required(),

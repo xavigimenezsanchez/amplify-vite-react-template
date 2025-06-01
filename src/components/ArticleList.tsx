@@ -15,19 +15,20 @@ const ArticleList: React.FC = () => {
       try {
         // First, find the latest issue number
         const response = await client.models.Articles.list();
+          setArticles(response.data);
 
         
-        if (response.data.length > 0) {
-          const latestIssueNumber = response.data[0].issue;
-          setLatestIssue(latestIssueNumber);
+        // if (response.data.length > 0) {
+        //   const latestIssueNumber = response.data[0].issue;
+        //   setLatestIssue(latestIssueNumber);
           
-          // Then fetch all articles with that issue number
-          const articlesResponse = await client.models.Articles.list({
-            filter: { issue: { eq: latestIssueNumber } }
-          });
+        //   // Then fetch all articles with that issue number
+        //   const articlesResponse = await client.models.Articles.list({
+        //     filter: { issue: { eq: latestIssueNumber } }
+        //   });
           
-          setArticles(articlesResponse.data);
-        }
+        //   setArticles(articlesResponse.data);
+        // }
         setLoading(false);
       } catch (error) {
         console.error('Error fetching articles:', error);
